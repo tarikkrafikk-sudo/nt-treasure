@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Ajoute la classe "js" sur <html> dès que possible : sert de base au CSS
+     pour activer les animations UNIQUEMENT si JavaScript fonctionne (sinon
+     tout le contenu reste visible par défaut, voir style.css section 17). -->
+<script>document.documentElement.classList.add('js');</script>
+<title>Boutique — NT TREASURE | Miel, Amlou & Cosmétique du Maroc</title>
+<meta name="description" content="Découvrez notre boutique NT TREASURE : Miel Marocain, Amlou & Alimentaire, Cosmétique & Hammam. Commande simple via WhatsApp.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo.png">
+</head>
+<body>
+
+<!-- ===================== BARRE D'INFO ===================== -->
+<div class="top-bar">Livraison partout au Maroc • Commande simple et rapide via WhatsApp 🇲🇦</div>
+
+<!-- ===================== HEADER (identique sur les 3 pages) ===================== -->
+<header class="site-header">
+  <div class="navbar-top">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a href="index.html" class="brand">
+      <div class="logo-wrap">
+        <img src="images/logo.jpg" alt="Logo NT TREASURE" class="brand-logo">
+        <svg class="bee" viewBox="0 0 60 40" aria-hidden="true">
+          <ellipse class="wing wing-l" cx="20" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+          <ellipse class="wing wing-r" cx="40" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+          <ellipse cx="30" cy="22" rx="15" ry="10" fill="#D4AF37"/>
+          <rect x="16" y="17" width="5" height="10" rx="2" fill="#000"/>
+          <rect x="24" y="14" width="5" height="16" rx="2" fill="#000"/>
+          <rect x="32" y="14" width="5" height="16" rx="2" fill="#000"/>
+          <circle cx="14" cy="20" r="4" fill="#000"/>
+          <line x1="12" y1="16" x2="8" y2="9" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="16" y1="16" x2="15" y2="7" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">NT TREASURE</span>
+        <span class="brand-tagline">Trésors du Maroc</span>
+      </div>
+    </a>
+
+    <a href="#" class="header-wa-icon" data-whatsapp-general aria-label="Nous contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+    </a>
+  </div>
+
+  <nav class="navbar-nav" id="navLinks">
+    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="boutique.html" class="nav-link active">Boutique</a>
+    <a href="index.html#pourquoi" class="nav-link">Pourquoi nous</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="btn btn-gold btn-sm nav-cta" data-whatsapp-general>Commander sur WhatsApp</a>
+  </nav>
+</header>
+
+<!-- ===================== EN-TÊTE BOUTIQUE ===================== -->
+<section class="shop-hero">
+  <div class="container reveal">
+    <span class="eyebrow">La Boutique NT TREASURE</span>
+    <h1>Nos Trésors du <span class="gold-word">Terroir Marocain</span></h1>
+    <p>Trois univers, une même exigence de pureté. Choisissez votre catégorie et commandez en un clic via WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ===================== ONGLETS DE NAVIGATION CATÉGORIES ===================== -->
+<div class="shop-tabs">
+  <a href="#miel" class="shop-tab active">🍯 Miel Marocain</a>
+  <a href="#amlou" class="shop-tab">🌿 Amlou & Alimentaire</a>
+  <a href="#hammam" class="shop-tab">🧴 Cosmétique & Hammam</a>
+</div>
+
+<!-- ===================== CATÉGORIE 1 : MIEL MAROCAIN ===================== -->
+<section id="miel" class="category-block">
+  <div class="container">
+    <div class="category-heading reveal">
+      <span class="ar">عسل مغربي</span>
+      <h2>Miel Marocain</h2>
+      <p>Récolté dans les montagnes et vergers du Maroc, notre miel est 100% pur, non pasteurisé et non transformé.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Produit : Miel d'Oranger -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/miel-caroubier.jpg" alt="Miel d'Oranger — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="6"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8M9 9l6 6M33 33l6 6M39 9l-6 6M15 33l-6 6"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">عسل زهر البرتقال</span>
+        <h3>Miel d'Oranger</h3>
+        <p>Récolté au printemps dans les vergers d'agrumes — douceur florale et arôme délicat.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Miel d'Oranger">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Miel de Montagne -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/miel-caroubier.jpg" alt="Miel de Montagne — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 40L18 16l8 12 6-9 12 21H4Z"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">عسل الجبل</span>
+        <h3>Miel de Montagne</h3>
+        <p>Multi-floral, issu des ruchers d'altitude du Moyen Atlas — riche et puissant en goût.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Miel de Montagne">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Miel de Jujubier (Sidr) -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/miel-caroubier.jpg" alt="Miel de Jujubier (Sidr) — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 40C8 20 24 8 40 8c0 16-12 32-32 32Z"/><path d="M8 40C16 32 24 24 40 8"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">عسل السدر</span>
+        <h3>Miel de Jujubier (Sidr)</h3>
+        <p>Rare et précieux, récolté sur les jujubiers sauvages — texture épaisse, goût intense.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Miel de Jujubier (Sidr)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Miel de Thym -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/miel-caroubier.jpg" alt="Miel de Thym — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="5"/><circle cx="24" cy="12" r="5"/><circle cx="24" cy="36" r="5"/><circle cx="12" cy="24" r="5"/><circle cx="36" cy="24" r="5"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">عسل الزعتر</span>
+        <h3>Miel de Thym</h3>
+        <p>Aux vertus reconnues, récolté dans les collines sauvages — parfum herbacé caractéristique.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Miel de Thym">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATÉGORIE 2 : AMLOU & ALIMENTAIRE ===================== -->
+<section id="amlou" class="category-block">
+  <div class="container">
+    <div class="category-heading reveal">
+      <span class="ar">أملو ومنتجات غذائية</span>
+      <h2>Amlou & Alimentaire</h2>
+      <p>Le meilleur de l'huile d'argan et des amandes, pilé à la pierre selon la tradition du Souss.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Produit : Amlou Traditionnel -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/almond-amlou.jpg" alt="Amlou Traditionnel — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 20h28l-3 20a4 4 0 01-4 4H17a4 4 0 01-4-4L10 20Z"/><path d="M16 20a8 8 0 0116 0"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">أملو تقليدي</span>
+        <h3>Amlou Traditionnel</h3>
+        <p>Amandes, argan et miel pilés à la pierre — la pâte à tartiner authentique du Souss.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Amlou Traditionnel">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Huile d'Argan Alimentaire -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/almond-amlou.jpg" alt="Huile d'Argan Alimentaire — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6h8v6l4 6v22a2 2 0 01-2 2H18a2 2 0 01-2-2V18l4-6V6Z"/><path d="M16 26h16"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">زيت أركان غذائي</span>
+        <h3>Huile d'Argan Alimentaire</h3>
+        <p>Pressée à froid, idéale pour rehausser plats, salades et tagines de son goût unique.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Huile d'Argan Alimentaire">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Coffret Miel & Amlou -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/miel-caroubier.jpg" alt="Coffret Miel & Amlou — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="18" width="36" height="24" rx="2"/><path d="M6 26h36M24 18v24"/><path d="M16 18c0-6 4-10 8-10s8 4 8 10"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">علبة عسل وأملو</span>
+        <h3>Coffret Miel & Amlou</h3>
+        <p>Le duo parfait à offrir : un pot de miel et un pot d'amlou dans un coffret cadeau élégant.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Coffret Miel &amp; Amlou">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Beurre d'Argan -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/almond-amlou.jpg" alt="Beurre d'Argan — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="12" y="14" width="24" height="26" rx="4"/><rect x="18" y="8" width="12" height="8" rx="2"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">زبدة الأركان</span>
+        <h3>Beurre d'Argan</h3>
+        <p>Onctueux et parfumé, un délice traditionnel à tartiner au petit-déjeuner.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Beurre d'Argan">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATÉGORIE 3 : COSMÉTIQUE & HAMMAM ===================== -->
+<section id="hammam" class="category-block">
+  <div class="container">
+    <div class="category-heading reveal">
+      <span class="ar">تجميل وحمام</span>
+      <h2>Cosmétique & Hammam</h2>
+      <p>Le rituel ancestral du hammam marocain, pour une peau purifiée et sublimée naturellement.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Produit : Savon Beldi -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/savon-noir-nila-safran.jpg" alt="Savon Beldi — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="16" width="32" height="18" rx="6"/><path d="M14 16c0-4 3-7 7-7"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">صابون بلدي</span>
+        <h3>Savon Beldi</h3>
+        <p>Savon noir à l'huile d'olive, l'indispensable pour préparer la peau au gommage.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Savon Beldi">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Gant Kessa -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/savon-homme-lineup.jpg" alt="Gant Kessa — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 38C6 32 6 20 14 14c6-4.6 14-4 19 1 6 6 6 15 0 21-5 5-14.6 6.2-21 2Z"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">كيس الكيس</span>
+        <h3>Gant Kessa</h3>
+        <p>Gant exfoliant traditionnel pour un gommage profond, révélant une peau douce et lumineuse.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Gant Kessa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Ghassoul -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/ghassoul-poudre.jpg" alt="Ghassoul — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 24a18 6 0 0036 0v6a18 6 0 01-36 0Z"/><ellipse cx="24" cy="24" rx="18" ry="6"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">غاسول</span>
+        <h3>Ghassoul</h3>
+        <p>Argile volcanique de l'Atlas, purifiante pour le visage, les cheveux et le corps.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Ghassoul">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+      <!-- Produit : Huile d'Argan Cosmétique -->
+      <div class="product-card reveal">
+        <div class="product-photo">
+          <img src="images/products/savon-noir-nila-safran.jpg" alt="Huile d'Argan Cosmétique — packaging NT TREASURE" loading="lazy">
+          <div class="product-icon-badge">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6C16 18 12 26 12 32a12 12 0 0024 0c0-6-4-14-12-26Z"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+        <span class="product-name-ar">زيت أركان للتجميل</span>
+        <h3>Huile d'Argan Cosmétique</h3>
+        <p>Nourrit la peau, les cheveux et les ongles — l'or liquide du Maroc pour une beauté naturelle.</p>
+        <span class="product-price">Prix sur demande</span>
+        <a href="#" class="btn btn-gold" data-whatsapp-product="Huile d'Argan Cosmétique">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-band">
+  <div class="container reveal">
+    <div class="divider-orn"></div>
+    <h2>Une question sur un produit ?</h2>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-gold" data-whatsapp-general>Discuter sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER (identique sur les 3 pages) ===================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <img src="images/logo.jpg" alt="Logo NT TREASURE">
+        <span>NT TREASURE</span>
+      </div>
+      <p>Trésors authentiques du Maroc — miel pur et produits naturels du terroir, direct des coopératives.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/nt_treasure?igsi=ZzMxbzVpYmdtbm5o" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.facebook.com/share/1B592UzCKK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h-2a5 5 0 00-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" data-whatsapp-general aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="boutique.html#miel">Miel Marocain</a></li>
+        <li><a href="boutique.html#amlou">Amlou & Alimentaire</a></li>
+        <li><a href="boutique.html#hammam">Cosmétique & Hammam</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>WhatsApp : +212 6 81 32 59 69</li>
+        <li>Facebook : <a href="https://www.facebook.com/share/1B592UzCKK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">NT treasure</a></li>
+        <li>Instagram : <a href="https://www.instagram.com/nt_treasure?igsi=ZzMxbzVpYmdtbm5o" target="_blank" rel="noopener noreferrer">nadia treasure</a></li>
+        <li>Email : contact@nttreasure.ma</li>
+        <li>Maroc</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-current-year>2026</span> NT TREASURE — Tous droits réservés.</span>
+    <span>Fait avec fierté au Maroc 🇲🇦</span>
+  </div>
+</footer>
+
+<!-- ===================== BOUTON WHATSAPP FLOTTANT ===================== -->
+<a href="#" class="wa-float" data-whatsapp-general aria-label="Contacter sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

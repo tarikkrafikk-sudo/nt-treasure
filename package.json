@@ -1,0 +1,15 @@
+{
+  "name": "nt-treasure",
+  "version": "1.0.0",
+  "description": "NT TREASURE — Site e-commerce vitrine (Trésors Authentiques du Maroc). Miel, Amlou, Cosmétique & Hammam. Commande via WhatsApp.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["e-commerce", "maroc", "miel", "artisanat"],
+  "author": "NT TREASURE",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

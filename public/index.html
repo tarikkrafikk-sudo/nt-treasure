@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Ajoute la classe "js" sur <html> dès que possible : sert de base au CSS
+     pour activer les animations UNIQUEMENT si JavaScript fonctionne (sinon
+     tout le contenu reste visible par défaut, voir style.css section 17). -->
+<script>document.documentElement.classList.add('js');</script>
+<title>NT TREASURE — Trésors Authentiques du Maroc | Miel Pur & Produits du Terroir</title>
+<meta name="description" content="NT TREASURE — Miel pur, amlou artisanal et cosmétiques naturels du Maroc, directement des coopératives. Commande simple via WhatsApp.">
+
+<!-- Polices Google : Playfair Display (titres) + Poppins (texte) + Amiri (accents arabes) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo.png">
+</head>
+<body>
+
+<!-- ===================== BARRE D'INFO ===================== -->
+<div class="top-bar">Livraison partout au Maroc • Commande simple et rapide via WhatsApp 🇲🇦</div>
+
+<!-- ===================== HEADER (identique sur les 3 pages) ===================== -->
+<header class="site-header">
+  <div class="navbar-top">
+    <!-- Menu hamburger (mobile uniquement) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Logo centré + abeille animée -->
+    <a href="index.html" class="brand">
+      <div class="logo-wrap">
+        <img src="images/logo.jpg" alt="Logo NT TREASURE" class="brand-logo">
+        <!-- Abeille dorée animée qui vole autour du logo (CSS keyframes bee-fly / wing-flap) -->
+        <svg class="bee" viewBox="0 0 60 40" aria-hidden="true">
+          <ellipse class="wing wing-l" cx="20" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+          <ellipse class="wing wing-r" cx="40" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+          <ellipse cx="30" cy="22" rx="15" ry="10" fill="#D4AF37"/>
+          <rect x="16" y="17" width="5" height="10" rx="2" fill="#000"/>
+          <rect x="24" y="14" width="5" height="16" rx="2" fill="#000"/>
+          <rect x="32" y="14" width="5" height="16" rx="2" fill="#000"/>
+          <circle cx="14" cy="20" r="4" fill="#000"/>
+          <line x1="12" y1="16" x2="8" y2="9" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="16" y1="16" x2="15" y2="7" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">NT TREASURE</span>
+        <span class="brand-tagline">Trésors du Maroc</span>
+      </div>
+    </a>
+
+    <!-- Icône WhatsApp rapide dans le header -->
+    <a href="#" class="header-wa-icon" data-whatsapp-general aria-label="Nous contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+    </a>
+  </div>
+
+  <!-- Liens de navigation (overlay coulissant sur mobile) -->
+  <nav class="navbar-nav" id="navLinks">
+    <a href="index.html" class="nav-link active">Accueil</a>
+    <a href="boutique.html" class="nav-link">Boutique</a>
+    <a href="index.html#pourquoi" class="nav-link">Pourquoi nous</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="btn btn-gold btn-sm nav-cta" data-whatsapp-general>Commander sur WhatsApp</a>
+  </nav>
+</header>
+
+<!-- ===================== VITRINE DU LOGO ANIMÉ (grand format, cadre 16:9) ===================== -->
+<section class="brand-showcase">
+  <div class="brand-showcase-frame">
+    <div class="logo-wrap logo-wrap--lg">
+      <img src="images/logo.jpg" alt="Logo NT TREASURE" class="brand-logo">
+      <svg class="bee bee--lg" viewBox="0 0 60 40" aria-hidden="true">
+        <ellipse class="wing wing-l" cx="20" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+        <ellipse class="wing wing-r" cx="40" cy="10" rx="11" ry="7" fill="rgba(255,255,255,0.85)"/>
+        <ellipse cx="30" cy="22" rx="15" ry="10" fill="#D4AF37"/>
+        <rect x="16" y="17" width="5" height="10" rx="2" fill="#000"/>
+        <rect x="24" y="14" width="5" height="16" rx="2" fill="#000"/>
+        <rect x="32" y="14" width="5" height="16" rx="2" fill="#000"/>
+        <circle cx="14" cy="20" r="4" fill="#000"/>
+        <line x1="12" y1="16" x2="8" y2="9" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="16" y1="16" x2="15" y2="7" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Miel pur • Produits naturels du terroir marocain</span>
+    <h1>Trésors <span class="gold-word">Authentiques</span> du Maroc</h1>
+    <div class="ar-line">كنوز أصيلة من المغرب</div>
+    <p class="lead">
+      Miel de nos montagnes, amlou pilé à la pierre et cosmétiques de hammam — sélectionnés à la source, directement auprès des coopératives marocaines.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="boutique.html" class="btn btn-gold">Découvrir la Boutique</a>
+      <a href="#" class="btn btn-outline" data-whatsapp-general>Commander sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALEURS ===================== -->
+<section class="section section-tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Notre engagement</span>
+      <h2>Une promesse simple, tenue à chaque pot</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <svg class="value-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 4C16 12 10 20 10 28a14 14 0 0028 0c0-8-6-16-14-24Z"/><path d="M24 18v18M18 26h12"/></svg>
+        <h3>100% Naturel</h3>
+        <p>Aucun additif, aucun colorant. Nos produits sont ce que la nature du Maroc a de plus pur à offrir.</p>
+      </div>
+      <div class="value-card reveal">
+        <svg class="value-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 20l18-12 18 12v18a2 2 0 01-2 2H8a2 2 0 01-2-2V20Z"/><path d="M18 40V26h12v14"/></svg>
+        <h3>Direct des coopératives</h3>
+        <p>Nous travaillons main dans la main avec des coopératives féminines et des apiculteurs locaux, sans intermédiaire.</p>
+      </div>
+      <div class="value-card reveal">
+        <svg class="value-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 4l6 12 13 2-9.5 9 2 13L24 34l-11.5 6 2-13L5 15l13-2 6-12Z"/></svg>
+        <h3>Qualité Premium</h3>
+        <p>Chaque lot est sélectionné avec exigence pour garantir une texture, un goût et une pureté irréprochables.</p>
+      </div>
+      <div class="value-card reveal">
+        <svg class="value-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 44s16-9.7 16-22a10 10 0 00-16-8 10 10 0 00-16 8c0 12.3 16 22 16 22Z"/></svg>
+        <h3>Savoir-faire artisanal</h3>
+        <p>Un héritage transmis de génération en génération, préservé dans chaque geste de production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATÉGORIES ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nos univers</span>
+      <h2>Trois trésors, un seul héritage</h2>
+      <p>Chaque catégorie raconte une facette du terroir marocain, du rucher à la ruche de montagne jusqu'au rituel du hammam.</p>
+    </div>
+    <div class="cat-grid">
+
+      <a href="boutique.html#miel" class="cat-card reveal">
+        <div class="cat-bg" style="background-image:url('images/cat-miel.jpg')"></div>
+        <div class="cat-card-content">
+          <span class="ar">عسل مغربي</span>
+          <h3>Miel Marocain</h3>
+          <p>Oranger, montagne, jujubier, thym — le nectar pur de nos ruchers.</p>
+          <span class="cat-link">Voir la collection →</span>
+        </div>
+      </a>
+
+      <a href="boutique.html#amlou" class="cat-card reveal">
+        <div class="cat-bg" style="background-image:url('images/cat-amlou.jpg')"></div>
+        <div class="cat-card-content">
+          <span class="ar">أملو ومنتجات غذائية</span>
+          <h3>Amlou & Alimentaire</h3>
+          <p>Pâte d'amlou pilée à la pierre et huile d'argan alimentaire pure.</p>
+          <span class="cat-link">Voir la collection →</span>
+        </div>
+      </a>
+
+      <a href="boutique.html#hammam" class="cat-card reveal">
+        <div class="cat-bg" style="background-image:url('images/cat-hammam.jpg')"></div>
+        <div class="cat-card-content">
+          <span class="ar">تجميل وحمام</span>
+          <h3>Cosmétique & Hammam</h3>
+          <p>Savon beldi, gant kessa, ghassoul et huile d'argan cosmétique.</p>
+          <span class="cat-link">Voir la collection →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== POURQUOI NOUS CHOISIR ===================== -->
+<section id="pourquoi" class="section section-tight" style="background:var(--black-soft); border-top:1px solid rgba(212,175,55,0.15); border-bottom:1px solid rgba(212,175,55,0.15);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pourquoi nous choisir</span>
+      <h2>La confiance se mérite, elle ne se déclare pas</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <h3>Traçabilité totale</h3>
+        <p>Chaque produit est relié à sa coopérative d'origine, du Rif à l'Anti-Atlas.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">02</div>
+        <h3>Commande simplifiée</h3>
+        <p>Un clic sur WhatsApp suffit : pas de compte à créer, pas de complication.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">03</div>
+        <h3>Livraison partout au Maroc</h3>
+        <p>De Tanger à Dakhla, vos trésors arrivent soigneusement emballés.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">04</div>
+        <h3>Satisfaction garantie</h3>
+        <p>Un produit non conforme ? Nous le reprenons, sans discussion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-band">
+  <div class="container reveal">
+    <div class="divider-orn"></div>
+    <h2>Prêt à goûter l'authentique ?</h2>
+    <div class="hero-actions">
+      <a href="boutique.html" class="btn btn-gold">Explorer nos produits</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER (identique sur les 3 pages) ===================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <img src="images/logo.jpg" alt="Logo NT TREASURE">
+        <span>NT TREASURE</span>
+      </div>
+      <p>Trésors authentiques du Maroc — miel pur et produits naturels du terroir, direct des coopératives.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/nt_treasure?igsi=ZzMxbzVpYmdtbm5o" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.facebook.com/share/1B592UzCKK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h-2a5 5 0 00-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" data-whatsapp-general aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="index.html#pourquoi">Pourquoi nous</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="boutique.html#miel">Miel Marocain</a></li>
+        <li><a href="boutique.html#amlou">Amlou & Alimentaire</a></li>
+        <li><a href="boutique.html#hammam">Cosmétique & Hammam</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>WhatsApp : +212 6 81 32 59 69</li>
+        <li>Facebook : <a href="https://www.facebook.com/share/1B592UzCKK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">NT treasure</a></li>
+        <li>Instagram : <a href="https://www.instagram.com/nt_treasure?igsi=ZzMxbzVpYmdtbm5o" target="_blank" rel="noopener noreferrer">nadia treasure</a></li>
+        <li>Email : contact@nttreasure.ma</li>
+        <li>Maroc</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-current-year>2026</span> NT TREASURE — Tous droits réservés.</span>
+    <span>Fait avec fierté au Maroc 🇲🇦</span>
+  </div>
+</footer>
+
+<!-- ===================== BOUTON WHATSAPP FLOTTANT ===================== -->
+<a href="#" class="wa-float" data-whatsapp-general aria-label="Contacter sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.6 14.3c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.2.1.9-.1 1.5z"/></svg>
+</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1115 @@
+/* ==========================================================================
+   NT TREASURE — Feuille de style principale
+   Style "Luxe Marocain" — Noir #000 / Or #D4AF37 / Blanc #FFFFFF
+   Polices : Playfair Display (titres) + Poppins (texte)
+   Approche : Mobile First (styles de base = mobile, puis min-width)
+   ========================================================================== */
+
+/* -------------------- 1. VARIABLES GLOBALES -------------------- */
+:root {
+  --black: #000000;
+  --black-soft: #0b0b0b;
+  --black-card: #111111;
+  --gold: #D4AF37;
+  --gold-light: #E8CD78;
+  --gold-dark: #a5842a;
+  --white: #FFFFFF;
+  --gray: #b8b6ae;
+  --gray-soft: #8a887f;
+  --whatsapp-green: #25D366;
+  --whatsapp-green-dark: #1da851;
+
+  --font-title: 'Playfair Display', 'Georgia', serif;
+  --font-text: 'Poppins', 'Segoe UI', sans-serif;
+  --font-ar: 'Amiri', 'Cairo', serif;
+
+  --radius: 10px;
+  --radius-lg: 20px;
+  --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.15);
+  --header-h: 118px;
+  --topbar-h: 34px;
+}
+
+/* -------------------- 2. RESET -------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/*
+ * CORRECTIF MOBILE (bug principal) :
+ * Le menu mobile utilise "position: fixed" + "transform: translateX(100%)"
+ * pour glisser hors de l'écran. Sur certains navigateurs mobiles (Safari iOS,
+ * Chrome Android), un élément fixed+transform continue d'agrandir la largeur
+ * "scrollable" du document même hors champ. Résultat : le téléphone détecte
+ * une page plus large que l'écran et DÉZOOME automatiquement toute la page
+ * -> logo/abeille/icônes WhatsApp semblent énormes, tout paraît collé à
+ * gauche, rien n'est centré. "overflow-x: hidden" + "width: 100%" sur <html>
+ * empêche ce débordement invisible et règle 100% du problème.
+ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Motif "nid d'abeille" très léger et transparent, fixé en fond de page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--black);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104' viewBox='0 0 60 104'%3E%3Cpath d='M30 0 L60 17.3 L60 52 L30 69.3 L0 52 L0 17.3 Z' fill='none' stroke='%23D4AF37' stroke-opacity='0.055' stroke-width='1'/%3E%3Cpath d='M30 34.6 L60 52 L60 86.6 L30 104 L0 86.6 L0 52 Z' fill='none' stroke='%23D4AF37' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 104px;
+}
+
+/* Empêche toute image de dépasser son conteneur (demande explicite du client) */
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* -------------------- 3. TITRES & TEXTES UTILITAIRES -------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.eyebrow, .hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-text);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.gold-text { color: var(--gold); }
+
+.ar-line {
+  font-family: var(--font-ar);
+  direction: rtl;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* -------------------- 4. BOUTONS -------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+  position: relative;
+  isolation: isolate;
+}
+
+.btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.35s ease; }
+.btn:hover svg { transform: scale(1.12) rotate(-4deg); }
+
+/* Effet "reflet" au survol : 2e calque de fond qui glisse en diagonale.
+   Pas de balise supplémentaire nécessaire, ni d'overflow:hidden (qui
+   couperait le box-shadow du bouton). */
+.btn-gold {
+  color: var(--black);
+  background-image:
+    linear-gradient(120deg, transparent 42%, rgba(255, 255, 255, 0.65) 50%, transparent 58%),
+    linear-gradient(135deg, var(--gold-light), var(--gold) 60%, var(--gold-dark));
+  background-size: 260% 100%, 100% 100%;
+  background-position: 145% 0, 0 0;
+  background-repeat: no-repeat;
+  box-shadow: var(--shadow-gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, background-position 0.7s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 34px rgba(212, 175, 55, 0.4);
+  filter: brightness(1.08);
+  background-position: -40% 0, 0 0;
+}
+.btn-gold:active { transform: translateY(-1px) scale(0.99); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-3px);
+}
+
+.btn-sm { padding: 9px 18px; font-size: 0.8rem; }
+.btn-block { width: 100%; }
+
+/* -------------------- 5. TOP BAR -------------------- */
+.top-bar {
+  background: var(--black);
+  color: var(--gold);
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  padding: 7px 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* -------------------- 6. HEADER / NAVIGATION -------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.navbar-top {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Logo centré + abeille animée --- */
+.brand {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-tagline {
+  display: none;
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-soft);
+  margin-top: 2px;
+}
+
+/* --- Abeille dorée animée autour du logo --- */
+.bee {
+  position: absolute;
+  width: 20px;
+  height: 14px;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  animation: bee-fly 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.6));
+}
+
+.bee .wing {
+  transform-origin: 50% 50%;
+  animation: wing-flap 0.12s ease-in-out infinite alternate;
+}
+.bee .wing-r { animation-delay: 0.02s; }
+
+@keyframes bee-fly {
+  0%   { top: -6px;  left: -22px; transform: rotate(-10deg) scale(1); }
+  12%  { top: -22px; left: 10px;  transform: rotate(15deg) scale(0.92); }
+  25%  { top: -10px; left: 44px;  transform: rotate(40deg) scale(1); }
+  38%  { top: 18px;  left: 60px;  transform: rotate(90deg) scale(0.9); }
+  50%  { top: 44px;  left: 40px;  transform: rotate(150deg) scale(1); }
+  62%  { top: 52px;  left: 6px;   transform: rotate(200deg) scale(0.92); }
+  75%  { top: 38px;  left: -24px; transform: rotate(255deg) scale(1); }
+  88%  { top: 10px;  left: -34px; transform: rotate(320deg) scale(0.92); }
+  100% { top: -6px;  left: -22px; transform: rotate(350deg) scale(1); }
+}
+
+@keyframes wing-flap {
+  from { transform: scaleY(1) rotate(0deg); }
+  to   { transform: scaleY(0.35) rotate(10deg); }
+}
+
+/* -------------------- 6bis. VITRINE DU LOGO (page d'accueil uniquement) --------------------
+   Grand logo animé (abeille dorée) centré, dans un cadre 16:9, tout en haut
+   de la page principale, juste sous le header. */
+.brand-showcase {
+  padding: 34px 16px 10px;
+}
+.brand-showcase-frame {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.1), transparent 65%),
+    var(--black-card);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+/* Motif nid d'abeille discret, propre à ce cadre */
+.brand-showcase-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104' viewBox='0 0 60 104'%3E%3Cpath d='M30 0 L60 17.3 L60 52 L30 69.3 L0 52 L0 17.3 Z' fill='none' stroke='%23D4AF37' stroke-opacity='0.07' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 104px;
+}
+
+/* Sélecteurs préfixés par .brand-showcase : évite tout conflit de spécificité
+   avec les règles .logo-wrap / .brand-logo du header (mêmes noms de classe,
+   tailles différentes) définies plus bas dans la feuille de style pour les
+   grands écrans — sans ce préfixe, une égalité de spécificité ferait gagner
+   la règle la plus tardive dans le fichier, quelle que soit son intention. */
+.brand-showcase .logo-wrap--lg {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  z-index: 2;
+}
+.brand-showcase .logo-wrap--lg .brand-logo {
+  width: 120px;
+  height: 120px;
+  border-width: 3px;
+  box-shadow: 0 0 26px rgba(212, 175, 55, 0.45);
+}
+
+/* Abeille agrandie, même principe d'animation que dans le header mais à
+   une échelle et une trajectoire adaptées au grand logo */
+.bee--lg {
+  width: 42px;
+  height: 30px;
+  animation-name: bee-fly-lg;
+}
+@keyframes bee-fly-lg {
+  0%   { top: -14px;  left: -46px; transform: rotate(-10deg) scale(1); }
+  12%  { top: -46px; left: 22px;  transform: rotate(15deg) scale(0.92); }
+  25%  { top: -22px; left: 92px;  transform: rotate(40deg) scale(1); }
+  38%  { top: 38px;  left: 126px;  transform: rotate(90deg) scale(0.9); }
+  50%  { top: 92px;  left: 84px;  transform: rotate(150deg) scale(1); }
+  62%  { top: 110px;  left: 12px;   transform: rotate(200deg) scale(0.92); }
+  75%  { top: 80px;  left: -50px; transform: rotate(255deg) scale(1); }
+  88%  { top: 22px;  left: -72px; transform: rotate(320deg) scale(0.92); }
+  100% { top: -14px;  left: -46px; transform: rotate(350deg) scale(1); }
+}
+
+@media (min-width: 600px) {
+  .brand-showcase .logo-wrap--lg { width: 160px; height: 160px; }
+  .brand-showcase .logo-wrap--lg .brand-logo { width: 160px; height: 160px; }
+  .bee--lg { width: 54px; height: 38px; }
+}
+@media (min-width: 900px) {
+  .brand-showcase { padding: 44px 16px 14px; }
+  .brand-showcase .logo-wrap--lg { width: 200px; height: 200px; }
+  .brand-showcase .logo-wrap--lg .brand-logo { width: 200px; height: 200px; }
+  .bee--lg { width: 66px; height: 47px; }
+}
+
+/* --- Icône WhatsApp du header --- */
+.header-wa-icon {
+  grid-column: 3;
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+.header-wa-icon svg { width: 19px; height: 19px; }
+.header-wa-icon:hover { background: var(--gold); color: var(--black); }
+
+/* --- Hamburger (mobile) --- */
+.hamburger {
+  grid-column: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  z-index: 1200;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Liens de navigation --- */
+.navbar-nav {
+  position: fixed;
+  top: var(--header-h);
+  right: 0;
+  bottom: 0;
+  width: 78%;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.98);
+  border-left: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 28px 26px;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  overflow-y: auto;
+}
+.navbar-nav.open { transform: translateX(0); }
+
+.nav-link {
+  width: 100%;
+  padding: 14px 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--gold); }
+
+.nav-cta { margin-top: 18px; width: 100%; text-align: center; }
+
+/* -------------------- 7. HERO -------------------- */
+.hero {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 18px 60px;
+  overflow: hidden;
+  /* Photo produit (pot NT TREASURE, logo abeille centré) en fond, avec un voile
+     noir dégradé par-dessus pour garantir la lisibilité du texte blanc/or quel
+     que soit l'endroit où il tombe sur l'image. Ordre des calques CSS : le
+     premier dégradé peint AU-DESSUS, la photo (url) est listée en dernier
+     donc tout en dessous. */
+  background-image:
+    /* Voile sombre, plus marqué sur la bande centrale où vit le texte
+       (25%-75% de la hauteur) pour garantir sa lisibilité, plus léger sur
+       les bords haut/bas pour laisser deviner la photo (pot + touches
+       dorées) en arrière-plan. */
+    linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.87) 25%, rgba(0,0,0,0.89) 75%, rgba(0,0,0,0.6) 100%),
+    radial-gradient(ellipse at 50% 12%, rgba(212, 175, 55, 0.1), transparent 55%),
+    url("../images/hero-banner.jpg");
+  background-size: cover, cover, cover;
+  background-position: center, center, center 38%;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.hero-content { max-width: 780px; position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  margin: 14px 0 10px;
+  color: var(--white);
+}
+.hero h1 .gold-word {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .ar-line { margin-bottom: 18px; font-size: 1rem; }
+
+.hero .lead {
+  color: var(--gray);
+  font-size: 0.98rem;
+  max-width: 560px;
+  margin: 0 auto 30px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------- 8. SECTIONS GÉNÉRIQUES -------------------- */
+.section { padding: 64px 0; }
+.section-tight { padding: 48px 0; }
+
+.section-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+.section-head h2 { font-size: 1.7rem; margin-bottom: 12px; }
+.section-head p { color: var(--gray); font-size: 0.95rem; }
+
+/* -------------------- 9. VALEURS -------------------- */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.value-card {
+  background: var(--black-card);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-gold);
+}
+.value-icon {
+  width: 42px; height: 42px;
+  color: var(--gold);
+  margin: 0 auto 16px;
+}
+.value-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.value-card p { color: var(--gray); font-size: 0.88rem; }
+
+/* -------------------- 10. CATÉGORIES (accueil) -------------------- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.cat-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 320px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: flex-end;
+}
+.cat-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+.cat-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.92) 88%);
+}
+.cat-card:hover .cat-bg { transform: scale(1.08); }
+
+.cat-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 26px 24px;
+  width: 100%;
+}
+.cat-card-content .ar {
+  font-family: var(--font-ar);
+  direction: rtl;
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 4px;
+}
+.cat-card-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.cat-card-content p { color: var(--gray); font-size: 0.85rem; margin-bottom: 12px; }
+.cat-link {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* -------------------- 11. POURQUOI NOUS -------------------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+.why-num {
+  font-family: var(--font-title);
+  font-size: 2.4rem;
+  color: rgba(212, 175, 55, 0.3);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.why-item h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.why-item p { color: var(--gray); font-size: 0.88rem; }
+
+/* -------------------- 12. CTA BAND -------------------- */
+.cta-band {
+  padding: 60px 0;
+  text-align: center;
+  background: linear-gradient(180deg, #000, #0a0904 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+.divider-orn {
+  width: 90px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 20px;
+  position: relative;
+}
+.divider-orn::before {
+  content: "◆";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 0.7rem;
+  background: var(--black);
+  padding: 0 8px;
+}
+.cta-band h2 { font-size: 1.6rem; margin-bottom: 24px; }
+
+/* -------------------- 13. FOOTER -------------------- */
+footer {
+  background: var(--black-soft);
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 50px 0 0;
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.footer-brand img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--gold); }
+.footer-brand span {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.footer-col p { color: var(--gray); font-size: 0.88rem; margin-bottom: 16px; }
+.footer-col h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: var(--gray); font-size: 0.9rem; transition: color 0.25s ease; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-col ul li { color: var(--gray); font-size: 0.9rem; }
+
+.social-row { display: flex; gap: 10px; }
+.social-row a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: all 0.25s ease;
+}
+.social-row a svg { width: 16px; height: 16px; }
+.social-row a:hover { background: var(--gold); color: var(--black); transform: translateY(-3px); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--gray-soft);
+}
+
+/* -------------------- 14. BOUTON WHATSAPP FLOTTANT -------------------- */
+.wa-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 58px;
+  height: 58px;
+  background: var(--whatsapp-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+  z-index: 900;
+  animation: wa-pulse 2.4s ease-in-out infinite;
+}
+.wa-float svg { width: 30px; height: 30px; fill: var(--white); }
+.wa-float:hover { background: var(--whatsapp-green-dark); transform: scale(1.06); }
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 6px 30px rgba(37, 211, 102, 0.85), 0 0 0 8px rgba(37, 211, 102, 0.12); }
+}
+
+/* -------------------- 15. PAGE BOUTIQUE -------------------- */
+.shop-hero {
+  padding: 54px 0 30px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.14), transparent 65%);
+}
+.shop-hero h1 { font-size: 1.9rem; margin: 10px 0; }
+.shop-hero p { color: var(--gray); max-width: 520px; margin: 0 auto; font-size: 0.92rem; }
+
+.shop-tabs {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 500;
+  background: rgba(0,0,0,0.97);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 16px;
+  -webkit-overflow-scrolling: touch;
+}
+.shop-tabs::-webkit-scrollbar { display: none; }
+
+/* Sur mobile, la barre reste défilable à gauche (évite un bug de scroll
+   flexbox quand le contenu centré dépasse la largeur de l'écran).
+   À partir de 640px, les 3 onglets tiennent toujours sur une ligne :
+   on les centre pour un rendu plus équilibré. */
+@media (min-width: 640px) {
+  .shop-tabs { justify-content: center; }
+}
+.shop-tab {
+  flex-shrink: 0;
+  padding: 9px 18px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 30px;
+  font-size: 0.82rem;
+  color: var(--gold);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.shop-tab:hover, .shop-tab.active { background: var(--gold); color: var(--black); }
+
+.category-block { padding: 56px 0; scroll-margin-top: calc(var(--header-h) + 60px); }
+.category-block:nth-child(even) { background: var(--black-soft); }
+
+.category-heading { text-align: center; max-width: 560px; margin: 0 auto 36px; }
+.category-heading .ar {
+  font-family: var(--font-ar);
+  direction: rtl;
+  display: block;
+  color: var(--gold-light);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.category-heading h2 { font-size: 1.5rem; margin-bottom: 10px; }
+.category-heading p { color: var(--gray); font-size: 0.9rem; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.product-card {
+  background: var(--black-card);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-gold);
+}
+
+/* --- Photo produit (remplace l'ancienne icône seule en haut de carte) --- */
+.product-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--black-soft);
+}
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-photo img { transform: scale(1.06); }
+
+/* Petit badge icône qui chevauche le bas de la photo, conservé du design
+   d'origine pour garder une identité visuelle cohérente avec le reste du site */
+.product-icon-badge {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
+}
+.product-icon-badge svg { width: 24px; height: 24px; color: var(--gold); }
+
+.product-body {
+  padding: 32px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name-ar {
+  font-family: var(--font-ar);
+  direction: rtl;
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  display: block;
+}
+.product-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.product-card p { color: var(--gray); font-size: 0.85rem; margin-bottom: 16px; flex-grow: 1; }
+.product-price {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+.product-card .btn {
+  width: 100%;
+  padding: 13px 12px;
+  font-size: 0.85rem;
+  gap: 6px;
+  letter-spacing: 0.2px;
+  animation: btn-pulse-glow 2.6s ease-in-out infinite;
+}
+.product-card .btn svg { width: 16px; height: 16px; }
+.product-card .btn:hover,
+.product-card .btn:focus-visible {
+  animation-play-state: paused;
+}
+
+@keyframes btn-pulse-glow {
+  0%, 100% { box-shadow: var(--shadow-gold); }
+  50% { box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55), 0 0 0 3px rgba(212, 175, 55, 0.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card .btn { animation: none; }
+  .btn-gold, .btn-gold:hover { background-position: 0 0, 0 0; }
+}
+
+/* -------------------- 16. PAGE CONTACT -------------------- */
+.contact-hero { padding: 54px 0 20px; text-align: center; }
+.contact-hero h1 { font-size: 1.9rem; margin: 10px 0; }
+.contact-hero p { color: var(--gray); max-width: 500px; margin: 0 auto; font-size: 0.92rem; }
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding: 30px 0 70px;
+}
+
+.contact-form-card, .contact-info-card {
+  background: var(--black-card);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px;
+}
+
+.contact-form-card h2, .contact-info-card h2 { font-size: 1.25rem; margin-bottom: 22px; }
+
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  padding: 13px 14px;
+  color: var(--white);
+  font-size: 0.92rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+.form-note { font-size: 0.78rem; color: var(--gray-soft); margin-top: 12px; text-align: center; }
+.form-success {
+  display: none;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid var(--whatsapp-green);
+  color: var(--whatsapp-green);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+.form-success.show { display: block; }
+
+.info-list { margin-bottom: 24px; }
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.info-item:last-child { border-bottom: none; }
+.info-item svg { width: 22px; height: 22px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.info-item strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+.info-item span { color: var(--gray); font-size: 0.85rem; }
+.info-item span a { color: inherit; transition: color 0.25s ease; }
+.info-item span a:hover { color: var(--gold); }
+
+/* -------------------- 17. ANIMATIONS AU SCROLL -------------------- */
+/*
+ * Progressive enhancement : par défaut (sans JavaScript, ou avant que le JS
+ * ait fini de s'exécuter), les éléments .reveal restent PLEINEMENT VISIBLES.
+ * L'effet de fondu n'est activé que si JS a pu ajouter la classe "js" sur
+ * <html> (voir le petit script inline dans le <head>). Ainsi, si le
+ * JavaScript est bloqué, lent ou en erreur sur un téléphone, le client voit
+ * quand même tout le contenu (produits, textes...) au lieu d'une page vide.
+ */
+.reveal { opacity: 1; transform: none; }
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* -------------------- 17bis. RESPONSIVE — PETITS ÉCRANS (< 768px) --------------------
+   Demande explicite du client : ajustements dédiés aux écrans mobiles.
+   (Le site est déjà "Mobile First" : les styles ci-dessus sont la base mobile.
+   Ce bloc affine encore certains détails propres aux petits écrans.) */
+@media (max-width: 767px) {
+  /* Barre d'info : texte centré, plus petit, ne dépasse jamais de l'écran */
+  .top-bar {
+    font-size: 0.68rem;
+    padding: 6px 14px;
+    line-height: 1.4;
+  }
+
+  /* Boutons pleine largeur : plus faciles à toucher du pouce sur mobile */
+  .hero-actions .btn,
+  .cta-band .btn {
+    width: 100%;
+  }
+
+  /* Titres un peu plus compacts pour éviter les retours à la ligne disgracieux */
+  .hero h1 { font-size: 1.9rem; }
+  .section-head h2, .shop-hero h1, .contact-hero h1 { font-size: 1.4rem; }
+
+  /* Espacements resserrés entre les sections */
+  .section { padding: 48px 0; }
+  .section-tight { padding: 36px 0; }
+
+  /* Le menu WhatsApp flottant ne doit jamais empiéter sur le contenu */
+  .wa-float { bottom: 16px; right: 16px; }
+}
+
+/* -------------------- 17ter. RESPONSIVE — TRÈS PETITS ÉCRANS (≤ 380px) --------------------
+   iPhone SE (1ère gén.), vieux Android compacts : on réduit encore un peu le logo,
+   l'abeille et les titres pour garantir un rendu parfait même sur les plus petits écrans. */
+@media (max-width: 380px) {
+  .logo-wrap, .brand-logo { width: 46px; height: 46px; }
+  .brand-name { font-size: 1.05rem; }
+  .header-wa-icon { width: 36px; height: 36px; }
+  .hero h1 { font-size: 1.6rem; }
+  .wa-float { width: 50px; height: 50px; }
+  .wa-float svg { width: 26px; height: 26px; }
+}
+
+/* -------------------- 18. RESPONSIVE — TABLETTE (≥600px) -------------------- */
+@media (min-width: 600px) {
+  .hero h1 { font-size: 2.7rem; }
+  .hero-actions { flex-direction: row; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+
+/* -------------------- 19. RESPONSIVE — DESKTOP (≥900px) -------------------- */
+@media (min-width: 900px) {
+  :root { --header-h: 128px; }
+
+  .navbar-top { grid-template-columns: 1fr auto 1fr; padding: 16px 32px; }
+  .brand { grid-column: 2; gap: 16px; }
+  .logo-wrap { width: 68px; height: 68px; }
+  .brand-logo { width: 68px; height: 68px; }
+  .brand-name { font-size: 1.55rem; }
+  .brand-tagline { display: block; }
+
+  .hamburger { display: none; }
+  .header-wa-icon { grid-column: 3; }
+
+  .navbar-nav {
+    position: static;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 10px 0 4px;
+    gap: 34px;
+  }
+  .nav-link { width: auto; border-bottom: none; padding: 6px 2px; position: relative; }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-cta { margin-top: 0; width: auto; margin-left: 10px; }
+
+  .hero h1 { font-size: 3.4rem; }
+  .hero .lead { font-size: 1.05rem; }
+
+  .values-grid { grid-template-columns: repeat(4, 1fr); }
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .why-grid { grid-template-columns: repeat(4, 1fr); }
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+
+  .contact-wrap { grid-template-columns: 1.3fr 1fr; align-items: start; }
+
+  .section { padding: 90px 0; }
+}
+
+@media (min-width: 1100px) {
+  .product-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* -------------------- 20. ACCESSIBILITÉ : réduction des animations -------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .bee, .wa-float, .reveal, .cat-bg { animation: none !important; transition: none !important; }
+}
