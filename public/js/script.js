@@ -20,7 +20,7 @@
    Format international SANS le "+" ni espaces. Exemple Maroc :
    "212600000000" pour +212 6 00 00 00 00
 ============================================================= */
-const WHATSAPP_NUMBER = "212681325969"; // Numéro WhatsApp officiel NT TREASURE
+const WHATSAPP_NUMBER = "212687825469"; // Numéro WhatsApp officiel NT TREASURE
 
 // Message général envoyé quand on clique sur un bouton WhatsApp "générique"
 const WHATSAPP_MESSAGE_GENERAL =
